@@ -90,8 +90,8 @@
                     <?= $produto['quantidade'] ?>
                 </td>
                 <td>
-                    <a href="deletar.php?id=<?= $produto['id']?>"> [x] </a>
-                    <a href="form.php?id=<?= $produto['id']?>"> editar </a>
+                    <a href="deletar.php?id=<?= $produto['id_prod']?>"> [x] </a>
+                    <a href="form.php?id=<?= $produto['id_prod']?>"> editar </a>
                 </td>
             </tr>
             <?php
