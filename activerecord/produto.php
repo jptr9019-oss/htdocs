@@ -25,16 +25,19 @@
             return $this->$quantidade;
         }
 
+        public function setId($id){
+            $this->id = $id;
+        }
         public function setNome($nome){
             $this->nome = $nome;
         }
         public function setPreco($preco){
             $this->preco = $preco;
         }
-        public function setNome($descricao){
+        public function setDescricao($descricao){
             $this->descricao = $descricao;
         }
-        public function setNome($quantidade){
+        public function setQuantidade($quantidade){
             $this->quantidade = $quantidade;
         }
 
@@ -77,6 +80,17 @@
                 return true;
             }
             return false;
+        }
+        public function delete(){
+            $pdo = getConnection();
+            if(!$this->id){ return false; }
+            $stmt = $pdo->prepare("DELETE FROM produto WHERE id_prod = :id");
+            return $stmt->execute([':id' => $this->id]);
+        }
+        public static function all(PDO $pdo){
+            $pdo = getConnection();
+            $stmt = $pdo->query("SELECT * FROM produto");
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
     }
 ?>
