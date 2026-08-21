@@ -1,4 +1,5 @@
 <?php
+    require_once 'conexao.php';
     class Produto {
         private $id;
         private $nome;
@@ -6,11 +7,7 @@
         private $descricao;
         private $quantidade;
 
-        private $pdo;
-
-        public function __construct(PDO $pdo){
-            $this->pdo = $pdo;
-        }
+        
 
         public function getId(){
             return $this->$id;
@@ -42,9 +39,10 @@
         }
 
         public function save(){
+            $pdo = getConnection();
             if ($this->id){
                 $sql = "UPDATE produto SET nome=:n, preco=:p, descricao=:d, quantidade=:q WHERE id=:id";
-                $stmt = $this->pdo->prepare($sql);
+                $stmt = $pdo->prepare($sql);
                 return $stmt->execute([
                     ':n' => $this->nome,
                     ':p' => $this->preco,
