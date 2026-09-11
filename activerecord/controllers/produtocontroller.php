@@ -1,7 +1,14 @@
 <?php
     require_once "models/produto.php";
 
-    $produto = new produto();
-    $produto->setId(3);
-    $produto->delete();
+    class ProdutoController {
+        private $model;
+
+        public function listarTodos(){
+            $model = new Produto();
+            $produtos = $model->all();
+
+            
+        }
+    }
 ?>
