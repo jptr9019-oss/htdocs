@@ -1,5 +1,5 @@
 <?php
-    require_once "produto.php";
+    require_once "models/produto.php";
 
     $produto = new produto();
     $produto->setId(3);
